@@ -71,8 +71,13 @@ MONGO_DB = 'zhihu'
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'zhihu_user_info.pipelines.DBPipeline': 300,
+   'scrapy_redis.pipelines.RedisPipeline': 301,
 }
 
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+REDIS_URL = 'redis://root:redistest@39.106.36.194:6379'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
